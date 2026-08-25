@@ -1,18 +1,14 @@
 class Solution {
 public:
     int singleNumber(vector<int>& arr) {
-        int n = arr.size();
+        unordered_map<int, int> hash;
 
-        for(int i = 0; i < n; i++) {
-            int counter = 0;
+        for(int i = 0; i < arr.size(); i++) {
+            hash[arr[i]]++;
+        }
 
-            for(int j = 0; j < n; j++) {
-                if(arr[i] == arr[j]) {
-                    counter++;
-                }
-            }
-
-            if(counter == 1) {
+        for(int i = 0; i < arr.size(); i++) {
+            if(hash[arr[i]] == 1) {
                 return arr[i];
             }
         }
